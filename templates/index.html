@@ -2,30 +2,148 @@
 <html>
 <head>
 <title>RareAnimeHub</title>
-</head>
-<body style="background:black;color:white;font-family:sans-serif;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h1>RareAnimeHub 🔥</h1>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap');
+
+body{
+    margin:0;
+    background: linear-gradient(135deg,#0f0f1f,#1a0d2e,#0a0a23);
+    font-family:'Poppins',sans-serif;
+    color:#fff;
+}
+
+header{
+    padding:20px;
+    text-align:center;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    border-bottom:2px solid #00ff88;
+}
+
+header h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:2.5rem;
+    background:linear-gradient(45deg,#00ff88,#00ccff,#ff00ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:40px;
+}
+
+.anime-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(0,255,136,0.3);
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    transition:0.4s;
+    backdrop-filter: blur(12px);
+}
+
+.anime-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    border-color:#00ff88;
+    box-shadow:0 0 25px #00ff88;
+}
+
+.anime-card img{
+    width:180px;
+    border-radius:15px;
+    margin-bottom:15px;
+    box-shadow:0 0 15px rgba(0,255,136,0.5);
+}
+
+.anime-title{
+    font-size:1.3rem;
+    font-weight:600;
+    margin-bottom:15px;
+    color:#00ff88;
+}
+
+.episode-btn{
+    background:linear-gradient(45deg,#00ff88,#00ccff);
+    border:none;
+    padding:8px 15px;
+    margin:5px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.episode-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 15px #00ff88;
+}
+
+.player-section{
+    text-align:center;
+    margin:50px 0;
+}
+
+video{
+    width:80%;
+    max-width:900px;
+    border-radius:20px;
+    border:3px solid #00ff88;
+    box-shadow:0 0 30px rgba(0,255,136,0.6);
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    font-size:0.9rem;
+    color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 RareAnimeHub</h1>
+</header>
+
+<div class="container">
 
 {% for anime in animes %}
-    <div style="border:1px solid #00ff88;margin:20px;padding:20px;">
-        <h2>{{anime.title}}</h2>
-        <img src="{{anime.poster}}" width="200">
+    <div class="anime-card">
+        <img src="{{anime.poster}}">
+        <div class="anime-title">{{anime.title}}</div>
+
         <div>
             {% for ep in anime.episodes %}
-                <button onclick="playVideo('{{ep}}')">Episode {{loop.index}}</button>
+                <button class="episode-btn"
+                        onclick="playVideo('{{ep}}')">
+                    EP {{loop.index}}
+                </button>
             {% endfor %}
         </div>
     </div>
 {% endfor %}
 
-<div id="player" style="margin-top:30px;">
-    <video id="videoPlayer" width="800" controls></video>
+</div>
+
+<div class="player-section">
+    <video id="videoPlayer" controls></video>
+</div>
+
+<div class="footer">
+    © 2026 RareAnimeHub • Hindi Dubbed Streaming
 </div>
 
 <script>
 function playVideo(src){
-    document.getElementById("videoPlayer").src = src;
+    const player = document.getElementById("videoPlayer");
+    player.src = src;
+    player.scrollIntoView({behavior:"smooth"});
 }
 </script>
 
