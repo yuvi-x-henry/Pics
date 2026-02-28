@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RareAnimeHub</title>
+</head>
+<body style="background:black;color:white;font-family:sans-serif;">
+
+<h1>RareAnimeHub 🔥</h1>
+
+{% for anime in animes %}
+    <div style="border:1px solid #00ff88;margin:20px;padding:20px;">
+        <h2>{{anime.title}}</h2>
+        <img src="{{anime.poster}}" width="200">
+        <div>
+            {% for ep in anime.episodes %}
+                <button onclick="playVideo('{{ep}}')">Episode {{loop.index}}</button>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+
+<div id="player" style="margin-top:30px;">
+    <video id="videoPlayer" width="800" controls></video>
+</div>
+
+<script>
+function playVideo(src){
+    document.getElementById("videoPlayer").src = src;
+}
+</script>
+
+</body>
+</html>
