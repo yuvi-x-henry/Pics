@@ -9,7 +9,7 @@ anime_db = [
     {
         "id": 1,
         "title": "Naruto Shippuden Hindi",
-        "poster": "https://image.tmdb.org/t/p/w500/qVdTnlAOIFGdwsX3EevDqJpuw1U.jpg",
+        "poster": "https://i.imgur.com/7glcxNc.jpeg",
         "episodes": []
     },
     {
